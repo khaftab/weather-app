@@ -41,7 +41,7 @@ window.addEventListener("load", () => {
     });
 
     const setIcons = (iconID) => {
-      iconDOM.innerHTML = `<img src="http://openweathermap.org/img/wn/${iconID}@2x.png"/>`;
+      iconDOM.innerHTML = `<img src="https://openweathermap.org/img/wn/${iconID}@2x.png"/>`;
     };
   }
 });
