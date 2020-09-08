@@ -10,35 +10,59 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: linear-gradient(#a29bfe, #6c5ce7);
+  background: linear-gradient(#576aa0, #192a56);
   color: white;
   font-family: sans-serif;
 }
 
-.location,
-.temperature {
-  min-height: 30vh;
-  width: 50%;
+main .card {
+  width: 380px;
+  min-height: 93vh;
+  border-radius: 2rem;
+  border: none !important;
+  color: #111;
+}
+
+.weather {
+  margin-top: -1.8rem;
+}
+
+.card-city {
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #111;
+}
+
+.city-dot {
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #222;
+  font-size: 36pt;
+  font-weight: 400;
+  font-family: "Times New Roman";
+}
+
+.icon {
+  background: #111;
+  border-radius: 50%;
+  /* width: 40%; */
+}
+
+.up-section {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  align-items: flex-end;
+  /* justify-items: space-around !important; */
 }
 
-.temperature {
-  flex-direction: column;
+.temp {
+  font-size: 3rem;
 }
 
-.degree-section {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.degree-section span {
-  font-size: 30px;
-  margin-left: 10px;
-}
-
-.degree-section h2 {
-  font-size: 40px;
+.cloud-info p {
+  white-space: nowrap;
+  text-transform: capitalize;
 }

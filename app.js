@@ -1,11 +1,14 @@
 window.addEventListener("load", () => {
   let long;
   let lat;
-  const temperatureDescription = document.querySelector(
-    ".temperature-description"
-  );
-  const temperatureDegree = document.querySelector(".temperature-degree");
-  const locationTimezone = document.querySelector(".location-timezone");
+  const temperatureDescription = document.querySelector(".cloud-info p");
+  const temperatureDegree = document.querySelector(".temp");
+  const locationTimezone = document.querySelector(".card-city");
+  const iconDOM = document.querySelector(".icon");
+  const maxTemp = document.querySelector(".max-temp");
+  const minTemp = document.querySelector(".min-temp");
+  const feelsLike = document.querySelector(".feels-like p");
+  const humidityDOM = document.querySelector(".humidity p");
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -19,14 +22,26 @@ window.addEventListener("load", () => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          const temp = data.main.temp;
-          const description = data.weather[0].description;
+          const { temp, temp_max, temp_min, feels_like, humidity } = data.main;
+          const { description, icon } = data.weather[0];
           const timezone = data.name;
+
           temperatureDescription.innerText = description;
-          temperatureDegree.innerText = Math.floor(temp - 273);
+          temperatureDegree.innerHTML = `${Math.floor(temp - 273)}&deg;C`;
           locationTimezone.innerText = timezone;
+          feelsLike.innerContent = `${feels_like}&deg;`;
+          maxTemp.innerHTML = `${Math.floor(temp_max - 273)}&deg;C`;
+          minTemp.innerHTML = `${Math.floor(temp_min - 273)}&deg;C`;
+          humidityDOM.innerHTML = `${humidity}%`;
+
+          // calling the setIcon function
+          setIcons(icon);
         })
         .catch((err) => console.log(err));
     });
+
+    const setIcons = (iconID) => {
+      iconDOM.innerHTML = `<img src="http://openweathermap.org/img/wn/${iconID}@2x.png"/>`;
+    };
   }
 });
