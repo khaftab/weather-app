@@ -36,12 +36,21 @@ window.addEventListener("load", () => {
 
           // calling the setIcon function
           setIcons(icon);
+          changeColor(icon);
         })
         .catch((err) => console.log(err));
     });
 
     const setIcons = (iconID) => {
       iconDOM.innerHTML = `<img src="https://openweathermap.org/img/wn/${iconID}@2x.png"/>`;
+    };
+
+    const changeColor = (icon) => {
+      if (icon.includes("d")) {
+        console.log("true");
+      } else {
+        console.log("false");
+      }
     };
   }
 });
