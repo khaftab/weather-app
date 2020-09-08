@@ -9,6 +9,9 @@ window.addEventListener("load", () => {
   const minTemp = document.querySelector(".min-temp");
   const feelsLike = document.querySelector(".feels-like p");
   const humidityDOM = document.querySelector(".humidity p");
+  const cloudImage = document.querySelector(".card > img");
+  const cityName = document.querySelector(".card-city");
+  const cityDot = document.querySelector(".city-section div");
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -46,8 +49,10 @@ window.addEventListener("load", () => {
     };
 
     const changeColor = (icon) => {
-      if (icon.includes("d")) {
-        console.log("true");
+      if (icon.includes("n")) {
+        cloudImage.src = "./asset/night_image.svg";
+        cityName.style.color = "#fff";
+        cityDot.style.color = "#fff";
       } else {
         console.log("false");
       }
